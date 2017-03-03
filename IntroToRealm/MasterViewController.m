@@ -8,8 +8,10 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "Room.h"
+#import "Furniture.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <UIAlertViewDelegate>
 
 @property NSMutableArray *objects;
 @end
@@ -39,13 +41,55 @@
 }
 
 
+
 - (void)insertNewObject:(id)sender {
     if (!self.objects) {
         self.objects = [[NSMutableArray alloc] init];
     }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    [self.objects insertObject:[NSDate date] atIndex:0];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add New Room" message:@"Enter a Room Name. Then Press OK" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Room name";
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+        NSLog(@"User Tapped: Cancel");
+    }];
+    
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        NSLog(@"User Tapped: OK");
+        NSString *input = alertController.textFields[0].text;
+        Room *room = [[Room alloc] init];
+        room.name = input;
+
+        // Lets get its shared object
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        
+        // Everything in Realm (which is persisted) starts with beginWriteTransaction API. So let's start a new transaction.
+        [realm beginWriteTransaction];
+        
+        // Add room objects to realm
+        [realm addObject:room];
+        
+        // Then commit & end this transaction
+        [realm commitWriteTransaction];
+        
+        [self.objects addObject:room.name];
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[self.objects count]-1 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated: YES completion: nil];
+    
+   /* */
+    
+
 }
 
 

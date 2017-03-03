@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6ED946FD28E85130645D4162 /* Pods_IntroToRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A139B6539E8B1F4FD9A2233 /* Pods_IntroToRealm.framework */; };
 		DA865B161E69EF1000DFC73A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA865B151E69EF1000DFC73A /* main.m */; };
 		DA865B191E69EF1000DFC73A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA865B181E69EF1000DFC73A /* AppDelegate.m */; };
 		DA865B1C1E69EF1000DFC73A /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA865B1B1E69EF1000DFC73A /* MasterViewController.m */; };
@@ -14,9 +15,13 @@
 		DA865B221E69EF1000DFC73A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA865B201E69EF1000DFC73A /* Main.storyboard */; };
 		DA865B241E69EF1000DFC73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA865B231E69EF1000DFC73A /* Assets.xcassets */; };
 		DA865B271E69EF1000DFC73A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA865B251E69EF1000DFC73A /* LaunchScreen.storyboard */; };
+		DA865B301E69F6C800DFC73A /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = DA865B2F1E69F6C800DFC73A /* Room.m */; };
+		DA865B331E69F73200DFC73A /* Furniture.m in Sources */ = {isa = PBXBuildFile; fileRef = DA865B321E69F73200DFC73A /* Furniture.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A139B6539E8B1F4FD9A2233 /* Pods_IntroToRealm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntroToRealm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		858E1C30211B10E13D561CAD /* Pods-IntroToRealm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntroToRealm.release.xcconfig"; path = "Pods/Target Support Files/Pods-IntroToRealm/Pods-IntroToRealm.release.xcconfig"; sourceTree = "<group>"; };
 		DA865B111E69EF1000DFC73A /* IntroToRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntroToRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA865B151E69EF1000DFC73A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DA865B171E69EF1000DFC73A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -29,6 +34,11 @@
 		DA865B231E69EF1000DFC73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA865B261E69EF1000DFC73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA865B281E69EF1000DFC73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA865B2E1E69F6C800DFC73A /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		DA865B2F1E69F6C800DFC73A /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		DA865B311E69F73200DFC73A /* Furniture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Furniture.h; sourceTree = "<group>"; };
+		DA865B321E69F73200DFC73A /* Furniture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Furniture.m; sourceTree = "<group>"; };
+		E42539579EC058AD7BEE99C4 /* Pods-IntroToRealm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntroToRealm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntroToRealm/Pods-IntroToRealm.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +46,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ED946FD28E85130645D4162 /* Pods_IntroToRealm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D7A6D44883CE073E8C25C9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A139B6539E8B1F4FD9A2233 /* Pods_IntroToRealm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5A9C111AEE612A8DFD1A6A1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E42539579EC058AD7BEE99C4 /* Pods-IntroToRealm.debug.xcconfig */,
+				858E1C30211B10E13D561CAD /* Pods-IntroToRealm.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DA865B081E69EF1000DFC73A = {
 			isa = PBXGroup;
 			children = (
 				DA865B131E69EF1000DFC73A /* IntroToRealm */,
 				DA865B121E69EF1000DFC73A /* Products */,
+				D5A9C111AEE612A8DFD1A6A1 /* Pods */,
+				4D7A6D44883CE073E8C25C9F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +95,10 @@
 				DA865B181E69EF1000DFC73A /* AppDelegate.m */,
 				DA865B1A1E69EF1000DFC73A /* MasterViewController.h */,
 				DA865B1B1E69EF1000DFC73A /* MasterViewController.m */,
+				DA865B311E69F73200DFC73A /* Furniture.h */,
+				DA865B321E69F73200DFC73A /* Furniture.m */,
+				DA865B2E1E69F6C800DFC73A /* Room.h */,
+				DA865B2F1E69F6C800DFC73A /* Room.m */,
 				DA865B1D1E69EF1000DFC73A /* DetailViewController.h */,
 				DA865B1E1E69EF1000DFC73A /* DetailViewController.m */,
 				DA865B201E69EF1000DFC73A /* Main.storyboard */,
@@ -91,9 +125,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA865B2B1E69EF1000DFC73A /* Build configuration list for PBXNativeTarget "IntroToRealm" */;
 			buildPhases = (
+				40D85FFBCD33659AD78CE68C /* [CP] Check Pods Manifest.lock */,
 				DA865B0D1E69EF1000DFC73A /* Sources */,
 				DA865B0E1E69EF1000DFC73A /* Frameworks */,
 				DA865B0F1E69EF1000DFC73A /* Resources */,
+				DA9D19DEBB2B547678BABF11 /* [CP] Embed Pods Frameworks */,
+				15E18C02116BB9DF8C0763B3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -151,11 +188,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		15E18C02116BB9DF8C0763B3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IntroToRealm/Pods-IntroToRealm-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40D85FFBCD33659AD78CE68C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DA9D19DEBB2B547678BABF11 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IntroToRealm/Pods-IntroToRealm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DA865B0D1E69EF1000DFC73A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA865B331E69F73200DFC73A /* Furniture.m in Sources */,
+				DA865B301E69F6C800DFC73A /* Room.m in Sources */,
 				DA865B191E69EF1000DFC73A /* AppDelegate.m in Sources */,
 				DA865B1C1E69EF1000DFC73A /* MasterViewController.m in Sources */,
 				DA865B161E69EF1000DFC73A /* main.m in Sources */,
@@ -277,6 +364,7 @@
 		};
 		DA865B2C1E69EF1000DFC73A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E42539579EC058AD7BEE99C4 /* Pods-IntroToRealm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UZD8JHA5UW;
@@ -289,6 +377,7 @@
 		};
 		DA865B2D1E69EF1000DFC73A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 858E1C30211B10E13D561CAD /* Pods-IntroToRealm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UZD8JHA5UW;
@@ -318,6 +407,7 @@
 				DA865B2D1E69EF1000DFC73A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

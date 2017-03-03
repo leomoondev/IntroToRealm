@@ -1,0 +1,14 @@
+PODS:
+  - Realm (2.4.2):
+    - Realm/Headers (= 2.4.2)
+  - Realm/Headers (2.4.2)
+
+DEPENDENCIES:
+  - Realm
+
+SPEC CHECKSUMS:
+  Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
+
+PODFILE CHECKSUM: 3f1bf09e06c2ccb643be8cd405d9510694dd4b35
+
+COCOAPODS: 1.2.0
