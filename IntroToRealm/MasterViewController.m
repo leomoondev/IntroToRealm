@@ -77,14 +77,19 @@
         // Then commit & end this transaction
         [realm commitWriteTransaction];
         
+//        [self.objects addObject:room.name];
+//        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[self.objects count]-1 inSection:0];
+//        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //[self.objects insertObject:room atIndex:0];
         [self.objects addObject:room.name];
-        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[self.objects count]-1 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        NSIndexPath *indexPath = ;
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:([Room allObjects].count - 1) inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
         
     }];
     
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];
+    [self.tableView reloadData];
     [self presentViewController:alertController animated: YES completion: nil];
     
    /* */
@@ -98,12 +103,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        RLMResults *results = [Room allObjects];
+        Room *object = results[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
+    
 }
 
 
@@ -115,15 +122,15 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
-}
+    RLMResults *results = [Room allObjects];
+    return results.count;}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    RLMResults *results = [Room allObjects];
+    Room *room = results[indexPath.row];
+    cell.textLabel.text = room.name;
     return cell;
 }
 

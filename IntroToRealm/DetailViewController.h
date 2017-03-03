@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Room.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UITableViewController
 
-@property (strong, nonatomic) NSDate *detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) Room *detailItem;
 
 @end
 
