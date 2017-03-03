@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Room.h"
+#import "Furniture.h"
 
-@interface DetailViewController : UITableViewController
 
+@interface DetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) Room *detailItem;
 
 @end
