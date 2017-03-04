@@ -7,26 +7,14 @@
 //
 
 #import <Realm/Realm.h>
+#import "Furniture.h"
 
 @interface Room : RLMObject
 
 @property NSString *name;
 
+@property RLMArray<Furniture *><Furniture> *furniture;
 
-//
-//#import <Realm/Realm.h>
-//
-//@interface Artist : RLMObject
-//
-//@property (nonatomic, strong) NSString *firstName;
-//
-//@property (nonatomic, strong) NSString *lastName;
-//
-//@property (nonatomic, strong) NSDate *registrationDate;
-//
-//// This protocol enables typed collections. i.e.:
-//
-//// RLMArray<Artist>
 @end
 
 RLM_ARRAY_TYPE(Room)

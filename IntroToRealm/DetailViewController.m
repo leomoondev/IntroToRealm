@@ -10,51 +10,78 @@
 
 @interface DetailViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property NSMutableArray *storeFurnitures;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-
 @end
 
 @implementation DetailViewController
 
-//- (void)configureView {
-//    // Update the user interface for the detail item.
-//    if (self.detailItem) {
-//        _detailItem = newDetailItem;
-//
-//        self.detailDescriptionLabel.text = [self.detailItem description];
-//    }
-//}
+#pragma mark - Managing the detail item
 
+- (void)setDetailItem:(id)newDetailItem {
+    if (_detailItem != newDetailItem) {
+        _detailItem = newDetailItem;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    // Do any additional setup after loading the view, typically from a nib.
-    //[self configureView];
+    self.detailTableView.delegate = self;
+    self.detailTableView.dataSource = self;
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    self.navigationItem.rightBarButtonItem = addButton;
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"aRoom = %@", self.detailItem];
+    self.storeFurnitures = [Furniture objectsWithPredicate:pred];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
-#pragma mark - Managing the detail item
-
-- (void)setDetailItem:(Room *)newDetailItem {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+- (void)insertNewObject:(id)sender {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add New Furniture" message:@"Enter a Furniture Name. Then Press OK" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Furniture name";
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+        NSLog(@"User Tapped: Cancel");
+    }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        NSLog(@"User Tapped: OK");
+        NSString *input = alertController.textFields[0].text;
         
-        // Update the view.
-        //[self configureView];
-    }
+        Furniture *aFurniture = [[Furniture alloc] init];
+        aFurniture.name = input;
+        aFurniture.aRoom = self.detailItem;
+        
+        // Lets get its shared object
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        
+        // Everything in Realm (which is persisted) starts with beginWriteTransaction API. So let's start a new transaction.
+        [realm beginWriteTransaction];
+        
+        // Add room objects to realm
+        [realm addObject:aFurniture];
+        
+        // Then commit & end this transaction
+        [realm commitWriteTransaction];
+
+        
+        [self.detailTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(self.storeFurnitures.count - 1) inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    [self.detailTableView reloadData];
+    [self presentViewController:alertController animated: YES completion: nil];
 }
 
-
+#pragma mark - UITableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -70,6 +97,5 @@
     cell.textLabel.text = furniture.name;
     return cell;
 }
-
 
 @end

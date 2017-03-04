@@ -10,13 +10,11 @@
 
 @class Room;
 
-
 @interface Furniture : RLMObject
 
 @property NSString *name;
 
-@property Room *room;
-
+@property Room *aRoom;
 
 @end
 

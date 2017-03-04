@@ -10,9 +10,9 @@
 #import "Room.h"
 #import "Furniture.h"
 
-
-@interface DetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface DetailViewController : UIViewController 
 @property (strong, nonatomic) Room *detailItem;
+@property (strong, nonatomic) IBOutlet UITableView *detailTableView;
+@property (strong, nonatomic) RLMResults<Furniture *> *storeFurnitures;
 
 @end
-
